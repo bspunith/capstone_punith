@@ -1,15 +1,38 @@
-git checkout -b feature/project6-update
+cd ~/Desktop/capstone_punith/project6
 
-git add .
+terraform init
+terraform validate
+terraform plan
+terraform apply
 
-git commit -m "Add Project 6 version control documentation"
+cat terraform_version.txt
 
-git push -u origin feature/project6-update
+cd ..
+
+git add project6/
+git commit -m "Add initial Terraform configuration"
+git push
+
+git diff
+
+cd project6
+terraform plan
+terraform apply
+
+cat terraform_version.txt
+
+cd ..
+
+git add project6/main.tf
+git commit -m "Update Terraform configuration to version 2"
+git push
+
+git log --oneline -2
 
 gh pr create \
 --base main \
 --head feature/project6-update \
---title "Project 6 Version Control Update" \
---body "Added Project 6 version control documentation and workflow."
+--title "Track Terraform Updates Using Git" \
+--body "Created Terraform configuration, updated Terraform code, tracked changes with Git, and pushed updates."
 
 gh pr merge --merge
