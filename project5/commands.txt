@@ -1,0 +1,47 @@
+# Create groups
+sudo groupadd developers
+sudo groupadd testers
+
+# Verify groups
+getent group developers
+getent group testers
+
+# Create users
+sudo useradd -m devuser0101
+sudo useradd -m testuser0101
+
+# Set passwords
+sudo passwd devuser0101
+sudo passwd testuser0101
+
+# Add users to groups
+sudo usermod -aG developers devuser0101
+sudo usermod -aG testers testuser0101
+
+# Verify group membership
+groups devuser0101
+groups testuser0101
+
+# Create secure directory
+sudo mkdir /project_data
+
+# Assign group ownership
+sudo chown root:developers /project_data
+
+# Set permissions
+sudo chmod 770 /project_data
+
+# Verify permissions
+ls -ld /project_data
+
+# Test allowed access
+su - devuser0101
+touch /project_data/allowed.txt
+ls -l /project_data
+exit
+
+# Test denied access
+su - testuser0101
+touch /project_data/denied.txt
+exit
+
