@@ -1,0 +1,15 @@
+git checkout -b feature/project6-update
+
+git add .
+
+git commit -m "Add Project 6 version control documentation"
+
+git push -u origin feature/project6-update
+
+gh pr create \
+--base main \
+--head feature/project6-update \
+--title "Project 6 Version Control Update" \
+--body "Added Project 6 version control documentation and workflow."
+
+gh pr merge --merge
