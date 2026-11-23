@@ -1,0 +1,29 @@
+Server Manager
+
+Manage
+→ Add Roles and Features
+
+Install:
+Active Directory Domain Services
+
+Promote this server to a domain controller
+
+Create Forest:
+capstone.local
+
+Open:
+Tools
+→ Active Directory Users and Computers
+
+Create User:
+user1
+
+Create User:
+user2
+
+Login:
+CAPSTONE\user1
+
+Login:
+CAPSTONE\user2
+

@@ -1,0 +1,19 @@
+Server Manager
+
+Tools
+→ DNS
+
+Forward Lookup Zones
+→ capstone.local
+
+New Host (A or AAAA)
+
+Host Name:
+web
+
+IP Address:
+<server-ip>
+
+ipconfig
+
+nslookup web.capstone.local
