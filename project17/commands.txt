@@ -1,0 +1,30 @@
+aws sts get-caller-identity
+
+wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+
+sudo dpkg -i amazon-cloudwatch-agent.deb
+
+ls /opt/aws/amazon-cloudwatch-agent/bin/
+
+/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a status
+
+aws logs create-log-group \
+--log-group-name project17-logs-0101 \
+--region ap-south-1
+
+aws logs create-log-stream \
+--log-group-name project17-logs-0101 \
+--log-stream-name test-stream \
+--region ap-south-1
+
+aws logs put-log-events \
+--log-group-name project17-logs-0101 \
+--log-stream-name test-stream \
+--log-events timestamp=$(date +%s000),message="Project17 CloudWatch Test Log" \
+--region ap-south-1
+
+aws logs get-log-events \
+--log-group-name project17-logs-0101 \
+--log-stream-name test-stream \
+--region ap-south-1
+
