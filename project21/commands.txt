@@ -1,0 +1,42 @@
+aws cloudwatch put-dashboard \
+--dashboard-name project21-dashboard-0101 \
+--dashboard-body '{
+  "widgets":[
+    {
+      "type":"metric",
+      "x":0,
+      "y":0,
+      "width":12,
+      "height":6,
+      "properties":{
+        "metrics":[
+          ["AWS/EC2","CPUUtilization"]
+        ],
+        "period":300,
+        "stat":"Average",
+        "region":"ap-south-1",
+        "title":"EC2 CPU Utilization"
+      }
+    },
+    {
+      "type":"metric",
+      "x":12,
+      "y":0,
+      "width":12,
+      "height":6,
+      "properties":{
+        "metrics":[
+          ["AWS/EC2","NetworkIn"]
+        ],
+        "period":300,
+        "stat":"Average",
+        "region":"ap-south-1",
+        "title":"EC2 Network In"
+      }
+    }
+  ]
+}'
+
+
+aws cloudwatch get-dashboard \
+--dashboard-name project21-dashboard-0101
