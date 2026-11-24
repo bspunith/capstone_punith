@@ -1,0 +1,21 @@
+aws s3 mb s3://project19-backup-0101 --region ap-south-1
+
+aws s3 ls
+
+mkdir -p ~/project19/logs
+
+echo "Project19 Backup Test" > ~/project19/logs/app.log
+
+chmod +x backup.sh
+
+./backup.sh
+
+aws s3 ls s3://project19-backup-0101
+
+crontab -e
+
+crontab -l
+
+aws s3 cp s3://project19-backup-0101/app.log downloaded.log
+
+cat downloaded.log
