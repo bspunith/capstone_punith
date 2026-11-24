@@ -1,0 +1,46 @@
+# Create S3 Bucket
+
+aws s3 mb s3://project22-archive-0101 --region ap-south-1
+
+# Verify Bucket
+
+aws s3 ls
+
+# Create Log File
+
+nano archive.log
+
+# Verify Log File
+
+cat archive.log
+
+# Upload Log File to S3
+
+aws s3 cp archive.log s3://project22-archive-0101/
+
+# Verify Uploaded File
+
+aws s3 ls s3://project22-archive-0101
+
+# View File Contents Directly From S3
+
+aws s3 cp s3://project22-archive-0101/archive.log - | nl
+
+# Create Lifecycle Configuration
+
+nano lifecycle.json
+
+# Apply Lifecycle Policy
+
+aws s3api put-bucket-lifecycle-configuration \
+--bucket project22-archive-0101 \
+--lifecycle-configuration file://lifecycle.json
+
+# Verify Lifecycle Policy
+
+aws s3api get-bucket-lifecycle-configuration \
+--bucket project22-archive-0101
+
+# Verify Archived Object Still Exists
+
+aws s3 ls s3://project22-archive-0101
